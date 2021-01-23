@@ -50,12 +50,26 @@
             </div>    
         </div>    
     </div>    
-    <div class="container px-3 mt-5">
+
+    <div class="container mt-5 px-3">
+        <div class="card rounded-0">
+            <a class="text-decoration-none text-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div class="card-header rounded-0 ">Product Description</div>
+            </a>    
+            <div class="collapse" id="collapseExample">
+                <div class="card-body">
+                    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex veritatis hic non saepe velit incidunt quos tempora nulla eum repellendus, officiis debitis ipsa quia obcaecati fuga odio. Nulla, quia itaque.</p>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <div class="container px-3 my-5 ">
         <div class="head mb-3" style="border-bottom: 2px solid #ff1744;">
             <div class="d-inline-flex py-1 px-4 text-white bd-highlight bg-theme">Similar Products</div>
             <a href="" class="text-muted text-decoration-none float-end">view all</a>
         </div>
-        <div class="row row-cols-1 row-cols-lg-5 g-2">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 pb-5">
             <div class="col">
                 <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
                     <img src="{{ asset('pink-teddy.png') }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">

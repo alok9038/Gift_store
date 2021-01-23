@@ -161,8 +161,9 @@
         }
         .home-img{
             background-size: cover!important;
+            background-position:top 0px center!important;
             margin-top: 0px;;
-            height: 300px;
+            height: 290px;
         }
         .navbar-mobile{
             box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
@@ -372,4 +373,9 @@
   }
   .text-theme{
     color: #ff1744;
+  }
+  .mobile-foot-menu{
+    -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px -0.1rem 0.5rem rgba(50, 50, 50, 0.781);
   }

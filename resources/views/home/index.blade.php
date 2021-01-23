@@ -7,9 +7,9 @@
                     <div class="card border-0 text-white shadow-sm rounded-0" style="backdrop-filter: blur(10px); background-color:rgba(2, 2, 2, 0.336);">
                         <div class="card-body">
                             <h1 class="fw-light">Personalized Gifts</h1>
-                            <p class="lead">Make the one you love the most by treating them with something super special Gifts.</p>
+                            <p class="lead">Make the one you love the most by treating them with something super special.</p>
                             <h2 class="">Flat 10% Discount</h2>
-                            <a href="" class="btn btn-danger float-end rounded-0 shadow-none">Show Now</a>
+                            <a href="" class="btn btn-outline-light float-end rounded-0 shadow-none">Show Now</a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
         <section class="customer-logos slider mt-4">
             <div class="slide">
               <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50%;" class="img-fluid" alt="">
                   <div class="card-body">
                       <h6 class="text-center small">T-shirts</h6>
                   </div>

@@ -20,6 +20,13 @@ Route::get('/product', function () {
     return view('home.product');
 });
 
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
