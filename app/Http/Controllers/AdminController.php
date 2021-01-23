@@ -42,7 +42,31 @@ class AdminController extends Controller
     public function insert(){
         return view('admin.insertProduct');
     }
+    public function insertProduct(Request $request){
+        $request->validate([
+            'title'          => 'required',
+            'price'          => 'required',
+            'discount_price' => 'required',
+            'description'    => 'required',
+            'cover_image'    => 'required'
+        ]);
 
+        $Product = new Products();
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->discount_price = $request->discount_price;
+        $product->description = $request->description;
+        $product->model = $request->model;
+        $product->brand = $request->brand;
+        $product->cover_image = $request->cover_image;
+        $product->images = $request->images;
+        $product->save();
+
+        return redirect()->route('products.view');
+    }
+    public function products(){
+        return view('admin.manage_product');
+    }
     public function index(){
         return view('admin.image');
     }

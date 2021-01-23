@@ -56,7 +56,7 @@
                             <a href="#">Manage Product</a>
                         </li>
                         <li>
-                            <a href="#">Add Product</a>
+                            <a href="{{ route('insert.product.view') }}">Add Product</a>
                         </li>
                         <li>
                             <a href="#">Home 3</a>

@@ -7,7 +7,7 @@
                 <div class="card rounded-0">
                     <div class="card-header rounded-0">Insert Product</div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="{{ route('insert.product') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="">Title</label>

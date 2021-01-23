@@ -32,7 +32,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/image',[AdminController::class,"index"]);
     Route::post('/image',[AdminController::class,"store"])->name('insert');
 
-    Route::get('/insert',[AdminController::class,"insert"]);
+    Route::get('/insert',[AdminController::class,"insert"])->name('insert.product.view');
+    Route::post('/insert',[AdminController::class,"InsertProduct"])->name('insert.product');
+
+    Route::get('/products',[AdminController::class,"products"])->name('products.view');
+
 
     
 });
