@@ -53,7 +53,7 @@
                     <a href="#product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Product</a>
                     <ul class="collapse list-unstyled" id="product">
                         <li>
-                            <a href="#">Manage Product</a>
+                            <a href="{{ route('products.view') }}">Manage Product</a>
                         </li>
                         <li>
                             <a href="{{ route('insert.product.view') }}">Add Product</a>
@@ -91,7 +91,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-theme">
+            <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-theme">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn text-white shadow-none">
