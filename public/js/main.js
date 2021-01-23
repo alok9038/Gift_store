@@ -2,10 +2,10 @@
 ("use strict");
 
 // closes the sidebar menu
-$(".menu-toggle").click(function (e) {
+$(".menu-toggle, .side-toggle").click(function (e) {
 e.preventDefault();
 $("#sidebar-wrapper").toggleClass("active");
-$(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass(
+$(".menu-toggle > .fa-bars, .menu-toggle > .fa-times, .side-toggle > .fa-bars, .side-toggle > .fa-bars").toggleClass(
 "fa-bars fa-times"
 );
 $(this).toggleClass("active");
@@ -34,8 +34,8 @@ if (target.length) {
 });
 $("#sidebar-wrapper .js-scroll-trigger").click(function () {
 $("#sidebar-wrapper").removeClass("active");
-$("menu-toggle").removeClass("active");
-$(".menu-toggle > fa.bars, .menu-toggle > .fa-times").toggleClass(
+$(".menu-toggle, .side-toggle").removeClass("active");
+$(".menu-toggle > fa.bars, .menu-toggle > .fa-times, .side-toggle > fa-times, .side-toggle > .fa-times").toggleClass(
 "fa-bars fa-times"
 );
 });

@@ -1,6 +1,6 @@
 @extends('layouts.homebase')
 @section('content')
-    <div class="container-fluid p-0" style="background-image:url({{ asset('hero.jpg') }}); height:400px; background-size:cover;">
+    <div class="container-fluid bg-dark p-0 home-img" style="background-image:url({{ asset('hero.jpg') }}); background-attachment:fixed; height:380px; background-size:100%; background-position:top 63px center;background-repeat:no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col mt-5">
@@ -16,48 +16,105 @@
             </div>
         </div>
     </div>
-    <div class="container mt-4">
+    <div class="container mt-4 categories">
         <div class="head text-center"><h4 class="fw-light text-center">Categories <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
-        <div class="row">
-            <div class="" style="width: 10%;">
-                <div class="card border-0" style="border-radius:25px;">
-                    <img src="tshirts.png" style="border-radius:50px;" class="img-fluid" alt="">
-                    <div class="card-body">
-                        <h6 class="text-center small">T-shirts</h6>
-                    </div>
-                </div>
+        <style>
+            
+        </style>
+        <section class="customer-logos slider mt-4">
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
             </div>
-            <div class="" style="width: 10%;">
-                <div class="card border-0" style="border-radius:25px;">
-                    <img src="mobileupload.png" style="border-radius:50px;" class="img-fluid" alt="">
-                    <div class="card-body">
-                        <h6 class="text-center small">Mobile Cover</h6>
-                    </div>
-                </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
             </div>
-            <div class="" style="width: 10%;">
-                <div class="card border-0" style="border-radius:25px;">
-                    <img src="tshirts.png" style="border-radius:50px;" class="img-fluid" alt="">
-                    <div class="card-body">
-                        <h6 class="text-center small">Pillow</h6>
-                    </div>
-                </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
             </div>
-            <div class="" style="width: 10%;">
-                <div class="card border-0" style="border-radius:25px;">
-                    <img src="mobileupload.png" style="border-radius:50px; object-fit:cover;" class="img-fluid" alt="">
-                    <div class="card-body">
-                        <h6 class="text-center small">Mobile Cover</h6>
-                    </div>
-                </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card border-0" style="border-radius:25px;">
+                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
+                  <div class="card-body">
+                      <h6 class="text-center small">T-shirts</h6>
+                  </div>
+              </div>
+            </div>
+        </section>
+        <div class="paginator">
+            <div class="mx-auto text-center" style="width: auto;">
+                <span class="prev me-3 p-1"><i class="fas fa-2x fa-arrow-left"></i></span>
+                <span class="next ms-3"><i class="fas fa-2x fa-arrow-right"></i></span>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="head text-center"><h4 class="fw-light text-center">Featured Post <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
+    <div class="container my-5">
+        <div class="head text-center"><h4 class="fw-light text-center">Latest Collections <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
             <div class="col">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
                     <img src="{{ asset('pink-teddy.png') }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
                     <div class="card-body">
                         <h6 class="text-truncate">Personalized Teddy With Personalized love meter pink</h6>
