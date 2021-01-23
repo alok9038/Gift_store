@@ -53,6 +53,27 @@ class AdminController extends Controller
             'cover_image'    => 'required'
         ]);
 
+
+        
+        $images = $request->file('images');
+        if ($request->hasFile('images')) :
+                foreach ($images as $item):
+                    $var = date_create();
+                    $time = date_format($var, 'YmdHis');
+                    // $imageName = time() . "." . $item->extension();
+                    // $item->move(public_path("product"),$imageName);
+
+                    $imageName = $time . '-' . $item->getClientOriginalName();
+                    $item->move(public_path("product"), $imageName);
+                    $arr[] = $imageName;
+                endforeach;
+                
+            $image = implode(",", $arr);
+        else:
+            $image = '';
+        endif;
+
+
         $filename = time() . "." . $request->cover_image->extension();
         $request->cover_image->move(public_path("product"),$filename);
 
@@ -68,7 +89,7 @@ class AdminController extends Controller
         $product->brand = $request->brand;
         $product->cover_image = $filename;
         $product->slug = $slug;
-        //$product->images = $request->images;
+        $product->images = $image;
         $product->save();
 
         return redirect()->route('products.view');
