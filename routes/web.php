@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     });
+    Route::get('/try', function () {
+        return view('admin.try');
+    });
+    
+    Route::get('/image',[AdminController::class,"index"]);
+    Route::post('/image',[AdminController::class,"store"])->name('insert');
+
+    Route::get('/insert',[AdminController::class,"insert"]);
+
+    
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
