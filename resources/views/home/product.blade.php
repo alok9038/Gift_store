@@ -72,7 +72,12 @@
                         </div>
                     </div> --}}
                 <div class=" mt-4">
-                    <a href="" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
+                    @auth
+                        <a href="{{ route('add.to.cart',['id'=>$product->id]) }}" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
+                    @endauth
+                    @guest
+                        <a href="{{ route('login') }}" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
+                    @endguest
                     <a href="#details" class="btn btn-secondary rounded-0 shadow-none">Know More</a>
                 </div>
                 <div class="alert alert-secondary rounded-0 small mt-4">

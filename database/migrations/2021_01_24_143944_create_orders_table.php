@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('coupon_id')->constrained('coupons');
-            $table->foreignId('address')->constrained('coupons');
+            $table->foreignId('coupon')->constrained('coupons');
+            $table->foreignId('address')->constrained('address');
             $table->boolean('ordered')->default(false);
             $table->timestamps();
         });

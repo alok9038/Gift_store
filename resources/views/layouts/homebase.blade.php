@@ -54,8 +54,13 @@
                     </div>
                 </form>
                 <ul class="navbar-nav desktop-nav d-lg-flex d-none">
-                    <li class="nav-item h-link"><a href="" class="nav-link">Login</a></li>
-                    <li class="nav-item h-link"><a href="" class="nav-link">Register</a></li>
+                    @auth
+                        
+                    @endauth
+                    @guest
+                        <li class="nav-item h-link"><a href="" class="nav-link">Login</a></li>
+                        <li class="nav-item h-link"><a href="" class="nav-link">Register</a></li>
+                    @endguest
                     <li class="nav-item h-link"><a href="" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark h6 rounded-circle">0</span></sup></a></li>
                 </ul>
                 
