@@ -42,6 +42,26 @@ class AdminController extends Controller
 
     }
 
+    public function storeCategory(Request $request){
+        $data['categories'] = Category::all();
+        return view('admin.category',$data);
+
+       
+        if(!empty($_POST['add_cat'])){
+            $request->validate([
+                'title'          => 'required',
+                'description'    => 'required',
+            ]);
+
+            $category = new Category();
+            $category->title = $request->title;
+            $category->description = $request->description;
+            $category->save();
+
+            return redirect()->back();
+    
+        }
+    }
     public function insert(){
         $data['category'] = Category::all();
         return view('admin.insertProduct',$data);

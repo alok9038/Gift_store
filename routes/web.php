@@ -30,6 +30,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/products',[AdminController::class,"products"])->name('products.view');
 
+    Route::get('/category',[AdminController::class,"storeCategory"])->name('category.view');
+    Route::post('/category',[AdminController::class,"storeCategory"])->name('insert.category');
+
     Route::delete('/product/{id}',[AdminController::class,"dropProduct"])->name('product.delete');
 
 

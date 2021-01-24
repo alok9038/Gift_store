@@ -11,36 +11,36 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="">Title</label>
-                                <input type="text" name="title" class="form-control rounded-0 shadow-none">
+                                <input type="text" name="title" class="form-control text-capitalize rounded-0 shadow-none">
                             </div>
                             <div class="mb-3">
                                 <label for="">Price</label>
-                                <input type="text" name="price" class="form-control rounded-0 shadow-none">
+                                <input type="text" name="price" class="form-control text-capitalize rounded-0 shadow-none">
                             </div>
                             <div class="mb-3">
                                 <label for="">Discount Price</label>
-                                <input type="text" name="discount_price" class="form-control rounded-0 shadow-none">
+                                <input type="text" name="discount_price" class="form-control text-capitalize rounded-0 shadow-none">
                             </div>
                             <div class="mb-3">
                                 <label for="">Category</label>
                                 <select name="category" id="" class="form-control rounded-0 shadow-none">
                                     <option value="" selected hidden disabled>Select Category</option>
                                     @foreach ($category as $cat)
-                                        <option value="{{ $cat->id }}">{{ $cat->title }}</option>
+                                        <option value="{{ $cat->id }}">{{ $cat->cat_title }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="">Brand</label>
-                                <input type="text" name="brand" class="form-control rounded-0 shadow-none">
+                                <input type="text" name="brand" class="form-control rounded-0 text-capitalize shadow-none">
                             </div>
                             <div class="mb-3">
                                 <label for="">model</label>
-                                <input type="text" name="model" class="form-control rounded-0 shadow-none">
+                                <input type="text" name="model" class="form-control rounded-0 text-capitalize shadow-none">
                             </div>
                             <div class="mb-3">
                                 <label for="">Description</label>
-                                <textarea name="description" id="" cols="30" rows="7" class="form-control rounded-0 shadow-none"></textarea>
+                                <textarea name="description" id="" cols="30" rows="7" class="form-control text-capitalize rounded-0 shadow-none"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="">Cover Image</label>

@@ -41,11 +41,16 @@
                                     <td>{{ $product->discount_price }}</td>
                                     <td>{{ $product->model }}</td>
                                     <td>{{ $product->brand }}</td>
-                                    <td>
+                                    <td class="d-flex">
                                         <form action="{{ route('product.delete',['id'=>$product->id]) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger rounded-0 btn-sm"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        <form action="{{ route('product.delete',['id'=>$product->id]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-info rounded-0 btn-sm"><i class="fa fa-edit"></i></button>
                                         </form>
                                     </td>
                                 </tr>
