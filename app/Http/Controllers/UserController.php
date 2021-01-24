@@ -20,8 +20,8 @@ class UserController extends Controller
                 $order_item = Order_item::where($cond)->get();
 
                 if(count($order_item) > 0){
-                    $qty = $order_item->qty+=1;
-                    Order_item::where($cond)->update('qty',$qty);
+                    $qty = $order_item[0]->qty+=1;
+                    Order_item::where($cond)->update(['qty'=>$qty]);
                 }
                 else{
                     Order_item::insert([
@@ -51,5 +51,11 @@ class UserController extends Controller
             return redirect()->route('cart');
         }
         
+    }
+
+    public function cart(){
+        $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();        
+        $data['category'] = Category::all();
+        return view('home.cart',$data);
     }
 }

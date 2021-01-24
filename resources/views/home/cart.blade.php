@@ -27,80 +27,88 @@
 
 <div class="container mb-5 mt-0">
 
-    <div class="row mb-5 ">
-        <div class="col-lg-8">
-            <div class="card rounded-0 shadow-sm mt-5">
-            <div class="card-header bg-white h5">My Cart ()</div>
-                <div class="card-body p-0 px-3">
-                    <div class="row  mt-4 pb-3 border-bottom">
-                        <div class="col-lg-3 ">
-                            <div class="h-50 w-100 mb-4">
-                                <img src="" class="img-fluid  w-100 " alt="">
+    @if (!empty($items))
+        <div class="row mb-5 ">
+            <div class="col-lg-8">
+                <div class="card rounded-0 shadow-sm mt-5">
+                <div class="card-header bg-white h5">My Cart ({{ count($items) }})</div>
+                    <div class="card-body p-0 px-3">
+                        @foreach ($items as $item)
+                            <div class="row  mt-4 pb-3 border-bottom">
+                                <div class="col-lg-3 ">
+                                    <div class="h-50 w-100 mb-4">
+                                        <img src="{{ asset('product/'.$item->items->cover_image) }}" class="img-fluid border-light w-100 " alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4 class="text-truncate h6" title="">{{ $item->items->title }}</h4>
+                                    <p class="text-muted small">black</p>
+                                    <h4 class="h6">₹ {{ $item->items->discount_price }}/- <span class="small font-weight-light ml-3 text-muted"><del>₹ {{ $item->items->price }}/-</del></span></h4>                                 
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="box btn-group">
+                                        <a href="" class="btn border-0 btn-secondary rounded-0">-</a>
+                                        <a href="" class="btn btn-light  text-dark border disabled rounded-0">{{ $item->qty }}</a>
+                                        <a href="" class="btn border-0 btn-secondary rounded-0">+</a>
+                                    </div>
+                                    <div class="box mt-3">
+                                        <a href="" class="text-muted small text-decoration-none"> <i class="fa fa-trash"></i>  Remove</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <h4 class="text-truncate h6" title=""></h4>
-                            <p class="text-muted small">black</p>
-                            <h4 class="h6">₹ discount_price/- <span class="small font-weight-light ml-3 text-muted"><del>₹ price/-</del></span></h4>                                 
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="box btn-group">
-                                <a href="" class="btn border-0 btn-secondary rounded-0">-</a>
-                                <a href="" class="btn btn-light  text-dark border disabled rounded-0"></a>
-                                <a href="" class="btn border-0 btn-secondary rounded-0">+</a>
-                            </div>
-                            <div class="box mt-3">
-                                <a href="" class="text-muted small text-decoration-none"> <i class="fa fa-trash"></i>  Remove</a>
-                            </div>
-                        </div>
-                    </div>
-                
-                </div>
-                
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-5" style="position:absolute; right:50px;">
-            <div class="card mt-5 rounded-0 shadow-sm ">
-                <div class="card-header h5 bg-white text-muted">Order Summary</div>
-                <div class="card-body">
-                    <table class="table-md table table-borderless">
-                        <tr>
-                            <td>Subtotal </td>
-                            <td>₹ </td>
-                        </tr>
-                        <tr>
-                            
-                        </tr>
-                        <tr class="">
-                            <td >Shipping</td>
-                            <td class="text-success-2 pb-5">Free</td>
-                        </tr>
-                        <tr class="border-dotted">
-                            
-                        </tr>
-                    </table>
-                    <form action="" class="mt-3" method="post">
-                        <div class="input-group">
-                            <input type="search" name="code" id="" placeholder="Enter coupon code" class="form-control shadow-none rounded-0">
-                            <div class="input-group-append">
-                                <input type="submit" value="Apply" class="btn btn-info rounded-0">
-                            </div>
-                        </div>
-                    </form>
-
-                        <h6 class="mt-3 text-success-2">
-                            <a href="" class="text-theme"><i class="fa fa-trash"></i></a>  <small>Applied</small>
-                        </h6>
+                        @endforeach
                     
-                    <a href="" class="btn bg-green text-white rounded-0 w-100 shadow mt-4">Checkout</a>
-                    <a href="" class="text-decoration-none text-info small float-end mt-3">Continue shopping.</a>
-                </div>            
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
             </div>
+            <div class="col-lg-4 mb-5">
+                <div class="card mt-5 rounded-0 shadow-sm ">
+                    <div class="card-header h5 bg-white text-muted">Order Summary</div>
+                    <div class="card-body">
+                        <table class="table-md table table-borderless">
+                            <tr>
+                                <td>Subtotal ( @if(count($items) == 1 ) {{ count($items) }} item) @else {{ count($items) }} items )@endif</td>
+                                <?php $sum= 0;   foreach($items as $i):   $sum+= $i->items->discount_price*$i->qty;  endforeach;  ?>
+                                <td>₹ {{ $sum }}</td>
+                            </tr>
+                            <tr>
+                                
+                            </tr>
+                            <tr class="">
+                                <td >Shipping</td>
+                                <td class="text-success-2 pb-5">Free</td>
+                            </tr>
+                            <tr class="border-dotted">
+                                <th class="">Total amount</th>
+                                
+                                <th class="">₹ {{ $sum }}</th>
+                                
+                            </tr>
+                        </table>
+                        <form action="" class="mt-3" method="post">
+                            <div class="input-group">
+                                <input type="search" name="code" id="" placeholder="Enter coupon code" class="form-control shadow-none rounded-0">
+                                <div class="input-group-append">
+                                    <input type="submit" value="Apply" class="btn btn-info rounded-0">
+                                </div>
+                            </div>
+                        </form>
+
+                            <h6 class="mt-3 text-success-2">
+                                <a href="" class="text-theme"><i class="fa fa-trash"></i></a>  <small>Applied</small>
+                            </h6>
+                        
+                        <a href="" class="btn bg-green text-white rounded-0 w-100 shadow mt-4">Checkout</a>
+                        <a href="" class="text-decoration-none text-info small float-end mt-3">Continue shopping.</a>
+                    </div>            
+                </div>
+            </div>
+            
         </div>
-        
-    </div>
-   
+    @else
+
         <div class="container pt-5">
             <div class="row mt-5">
                 <div class="col-lg-5 mx-auto">
@@ -110,6 +118,7 @@
                 </div>
             </div>
         </div>
+    @endif
 
 
 </div>

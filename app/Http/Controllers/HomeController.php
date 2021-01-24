@@ -21,8 +21,5 @@ class HomeController extends Controller
         $data['product'] = Product::where('slug',$name)->first();
         return view('home.product',$data);
     }
-    public function cart(){
-        $data['category'] = Category::all();
-        return view('home.cart',$data);
-    }
+    
 }

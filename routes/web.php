@@ -8,13 +8,11 @@ use App\Http\Controllers\UserController;
 // for homepage //
 
 Route::get('/', [HomeController::class,"index"])->name('homepage');
-Route::get('/cart', [HomeController::class,"cart"])->name('cart');
-
-
 Route::get('/product/{name}', [HomeController::class,"product"])->name('home.product');
 
 // cart work //
 
+Route::get('/cart', [UserController::class,"cart"])->name('cart');
 Route::get('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
 
 
