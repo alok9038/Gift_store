@@ -13,6 +13,7 @@ Route::get('/product/{name}', [HomeController::class,"product"])->name('home.pro
 // cart work //
 
 Route::get('/cart', [UserController::class,"cart"])->name('cart');
+Route::post('/cart', [UserController::class,"coupon"])->name('coupon');
 Route::get('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
 
 

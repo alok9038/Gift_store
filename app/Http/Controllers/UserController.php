@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Coupon;
 use Auth;
 use App\Models\Order_item;
 use Illuminate\Http\Request;
@@ -55,7 +56,24 @@ class UserController extends Controller
 
     public function cart(){
         $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();        
+        $data['order'] = Order::where([['user_id',Auth::id()],['ordered',false]])->first();        
         $data['category'] = Category::all();
         return view('home.cart',$data);
+    }
+    public function coupon(Request $req){
+        $order_id = $req->order_id;
+        $coupon = $req->code;
+
+        $check = Coupon::where('code',$coupon)->get();
+        if(count($check) == 0){
+            echo "<script>alert('coupon code not valid')</script>";
+            //return redirect()->back();
+        }else{
+            $query = Order::where('id',$order_id)->update([
+                'coupon_id' => $check[0]->id,
+                ]);
+                return redirect()->back();
+        }
+        
     }
 }

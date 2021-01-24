@@ -74,7 +74,10 @@
                                 <td>₹ {{ $sum }}</td>
                             </tr>
                             <tr>
-                                
+                                @if(!empty($order->coupon_id))
+                                <td class="">Coupon Discount</td>
+                                <td class="">- ₹ {{  $order->coupon->amount }}</td>
+                                @endif
                             </tr>
                             <tr class="">
                                 <td >Shipping</td>
@@ -83,12 +86,20 @@
                             <tr class="border-dotted">
                                 <th class="">Total amount</th>
                                 
-                                <th class="">₹ {{ $sum }}</th>
+                                <th class="">₹ 
+                                    @if (!empty($order->coupon_id))
+                                        {{ $sum - $order->coupon->amount }}
+                                    @else
+                                        {{ $sum }}
+                                    @endif
+                                </th>
                                 
                             </tr>
                         </table>
-                        <form action="" class="mt-3" method="post">
+                        <form action="{{ route('coupon') }}" class="mt-3" method="post">
+                            @csrf
                             <div class="input-group">
+                                <input type="text" name="order_id" hidden value="{{ $order->id }}">
                                 <input type="search" name="code" id="" placeholder="Enter coupon code" class="form-control shadow-none rounded-0">
                                 <div class="input-group-append">
                                     <input type="submit" value="Apply" class="btn btn-info rounded-0">
@@ -96,9 +107,11 @@
                             </div>
                         </form>
 
-                            <h6 class="mt-3 text-success-2">
-                                <a href="" class="text-theme"><i class="fa fa-trash"></i></a>  <small>Applied</small>
-                            </h6>
+                            @if (!empty($order->coupon_id))
+                                <h6 class="mt-3 text-success-2">
+                                    <a href="" class="text-theme"><i class="fa fa-trash"></i></a> <strong>{{ $order->coupon->code }}</strong> <small>Applied</small>
+                                </h6>
+                            @endif
                         
                         <a href="" class="btn bg-green text-white rounded-0 w-100 shadow mt-4">Checkout</a>
                         <a href="" class="text-decoration-none text-info small float-end mt-3">Continue shopping.</a>
