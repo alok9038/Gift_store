@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [HomeController::class,"index"])->name('homepage');
+Route::get('/cart', [HomeController::class,"cart"])->name('cart');
+
 
 Route::get('/product/{name}', [HomeController::class,"product"])->name('home.product');
 

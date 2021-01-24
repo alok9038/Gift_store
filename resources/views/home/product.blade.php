@@ -7,6 +7,15 @@
 --}}
 
     <div class="container" style="margin-top: 30px">
+        <div class="container px-2">
+            <nav class="" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white py-3 ps-3 rounded-0 shadow-sm">
+                  <li class="breadcrumb-item "><a href="#" class="text-muted text-decoration-none">Home</a></li>
+                  <li class="breadcrumb-item " aria-current="page"><a href="" class="text-decoration-none text-muted">Category</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Library</li>
+                </ol>
+            </nav>
+        </div>
         <div class="row">
             <div class="col-lg-5 mb-4 p-0">
                 <div class="slider-wrapper ">
@@ -49,12 +58,26 @@
                     @endphp
                     
                     % Discount</span>
+                    {{-- <div class="delivery col-6 pl-0 mt-4">
+                        <div class="input-group pl-0">
+                            <div class="input-group-prepend pl-0">
+                                <span class="input-group-text pl-0 bg-white border-0 "><i
+                                        class="fas fa-map-marker-alt mr-2"></i> Delivery</span>
+                            </div>
+                            <input type="text" placeholder=" Enter Delivery Pincode"
+                                class="border-left-0 border-top-0 border-right-0 border border-primary pincode-area">
+                            <div class="input-group-append">
+                                <a href="" class="text-primary border-5 border-bottom border-primary">check</a>
+                            </div>
+                        </div>
+                    </div> --}}
                 <div class=" mt-4">
                     <a href="" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
-                    <a href="" class="btn btn-secondary rounded-0 shadow-none">Know More</a>
+                    <a href="#details" class="btn btn-secondary rounded-0 shadow-none">Know More</a>
                 </div>
-                <span class="badge bg-info rounded-0 py-2 mt-3">Bulk enquiry</span>
                 <div class="alert alert-secondary rounded-0 small mt-4">
+                    <h6 class="fw-light fs-5">Bulk Enquiry</h6>
+                    <hr>
                     Free Delivery In Purnea (Urban) <br>
                     Cancellation Allow Before Order Processing
                 </div>
@@ -62,8 +85,8 @@
         </div>    
     </div>    
 
-    <div class="container mt-5 px-3">
-        <div class="card rounded-0">
+    <div class="container mt-5 px-3" id="details">
+        <div class="card rounded-0" >
             <div class="card-header rounded-0 ">Product Description</div>
             <div class="card-body">
                 <p class="">{{ $product->description }}</p>
