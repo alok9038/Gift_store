@@ -22,6 +22,15 @@
                                 <input type="text" name="discount_price" class="form-control rounded-0 shadow-none">
                             </div>
                             <div class="mb-3">
+                                <label for="">Category</label>
+                                <select name="category" id="" class="form-control rounded-0 shadow-none">
+                                    <option value="" selected hidden disabled>Select Category</option>
+                                    @foreach ($category as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="">Brand</label>
                                 <input type="text" name="brand" class="form-control rounded-0 shadow-none">
                             </div>

@@ -30,15 +30,24 @@
                                 <th>Brand</th>
                                 <th>Action</th>
                             </tr>
+                            @php
+                                $sr = 0;
+                            @endphp
                             @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->title }}</td>
+                                    <td>{{ $sr+=1 }}</td>
+                                    <td><h6 class="text-truncate">{{ $product->title }}</h6></td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->discount_price }}</td>
                                     <td>{{ $product->model }}</td>
                                     <td>{{ $product->brand }}</td>
-                                    <td><a href="" class="btn btn-danger btn-sm rounded-0"><i class="fa fa-trash"></i></a></td>
+                                    <td>
+                                        <form action="{{ route('product.delete',['id'=>$product->id]) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger rounded-0 btn-sm"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

@@ -2,23 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('home.index');
-});
-Route::get('/product', function () {
-    return view('home.product');
-});
+
+Route::get('/', [HomeController::class,"index"])->name('homepage');
+
+Route::get('/product/{name}', [HomeController::class,"product"])->name('home.product');
+
+
+
+// For admin Pannel //
 
 
 Route::prefix('admin')->group(function () {
@@ -36,6 +29,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/insert',[AdminController::class,"InsertProduct"])->name('insert.product');
 
     Route::get('/products',[AdminController::class,"products"])->name('products.view');
+
+    Route::delete('/product/{id}',[AdminController::class,"dropProduct"])->name('product.delete');
 
 
     

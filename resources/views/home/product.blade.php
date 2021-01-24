@@ -8,38 +8,49 @@
 
     <div class="container" style="margin-top: 30px">
         <div class="row">
-            <div class="col-lg-5 p-0">
+            <div class="col-lg-5 mb-4 p-0">
                 <div class="slider-wrapper ">
                     <div class="slider-for" style="height: auto">
-
-                      <div class="slider-for__item" data-src="{{ asset('pink-teddy.png') }}">
-                        <img src="{{ asset('pink-teddy.png') }}" class="img-fluid border" alt="" />
-                      </div>
-                      <div class="slider-for__item" data-src="{{ asset('tshirts.png') }}">
-                        <img src="{{ asset('tshirts.png') }}" class="img-fluid border" alt="" />
-                      </div>
+                        @php
+                            $images = explode(",",$product->images);
+                        @endphp
+                        @foreach ($images as $image)
+                        <div class="slider-for__item p-0" data-src="{{ asset('product/'.$image) }}">
+                            <img src="{{ asset('product/'.$image) }}" class="img-fluid border" style="height:400px;" alt="" />
+                          </div>
+                        @endforeach
+                      
+                      
 
                     </div>
                   
-                    <div class="slider-nav">
-
-                      <div class="slider-nav__item me-0">
-                        <img src="{{ asset('pink-teddy.png') }}" class="border img-fluid h-100" alt="" />
+                    <div class="slider-nav px-3">
+                        @foreach ($images as $image)
+                      <div class="slider-nav__item m-1">
+                        <img src="{{ asset('product/'.$image) }}" class="border img-fluid h-100" alt="" />
                       </div>
-                      <div class="slider-nav__item m-0">
-                        <img src="{{ asset('tshirts.png') }}" class="border img-fluid h-100" alt="" />
-                      </div>
-
+                      @endforeach
                     </div>
                   </div>        
             </div>    
             <div class="col-lg-7 px-3">
-                <h1 class="h4">Personalized Teddy With Personalized Love Meter</h1> 
+                <h1 class="h4">{{ $product->title }}</h1> 
                 <p class="small">Soft toys</p> 
-                <p class="h5 text-danger">₹. 799/- <del class="ms-2 text-muted small">₹. 1499/-</del></p>
-                <span class="badge bg-success rounded-0">44% Discount</span>
+                <p class="h5 text-danger">₹. {{ $product->discount_price }}/- <del class="ms-2 text-muted small">₹. {{ $product->price }}/-</del></p>
+                <span class="badge bg-green rounded-0 py-2 mt-3">
+                    @php
+                         $price = $product->price;
+                         $discount_price = $product->discount_price;
+
+                         $discount = ($price - $discount_price) / $price*100;
+
+                         echo intval($discount);
+
+                    @endphp
+                    
+                    % Discount</span>
                 <div class=" mt-4">
-                    <a href="" class="btn btn-success rounded-0 shadow-none">Add to cart</a>
+                    <a href="" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
                     <a href="" class="btn btn-secondary rounded-0 shadow-none">Know More</a>
                 </div>
                 <span class="badge bg-info rounded-0 py-2 mt-3">Bulk enquiry</span>
@@ -53,13 +64,9 @@
 
     <div class="container mt-5 px-3">
         <div class="card rounded-0">
-            <a class="text-decoration-none text-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <div class="card-header rounded-0 ">Product Description</div>
-            </a>    
-            <div class="collapse" id="collapseExample">
-                <div class="card-body">
-                    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex veritatis hic non saepe velit incidunt quos tempora nulla eum repellendus, officiis debitis ipsa quia obcaecati fuga odio. Nulla, quia itaque.</p>
-                </div>
+            <div class="card-header rounded-0 ">Product Description</div>
+            <div class="card-body">
+                <p class="">{{ $product->description }}</p>
             </div>
         </div>        
     </div>
@@ -70,30 +77,16 @@
             <a href="" class="text-muted text-decoration-none float-end">view all</a>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 pb-5">
+            @foreach ($s_products as $item)
             <div class="col">
                 <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
-                    <img src="{{ asset('pink-teddy.png') }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
+                    <img src="{{ asset('product/'.$item->cover_image) }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
                     <div class="card-body">
-                        <h6 class="text-truncate">Personalized Teddy With Personalized love meter pink</h6>
+                        <a href="" class="stretched-link text-dark"><h6 class="text-truncate">{{ $item->title }}</h6></a>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
-                    <img src="{{ asset('pink-teddy.png') }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
-                    <div class="card-body">
-                        <h6 class="text-truncate">Personalized Teddy With Personalized love meter pink</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
-                    <img src="{{ asset('pink-teddy.png') }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
-                    <div class="card-body">
-                        <h6 class="text-truncate">Personalized Teddy With Personalized love meter pink</h6>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

@@ -374,6 +374,9 @@
   .text-theme{
     color: #ff1744;
   }
+  .bg-green{
+    background-color: #00c853;
+  }
   .mobile-foot-menu{
     -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
     -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);

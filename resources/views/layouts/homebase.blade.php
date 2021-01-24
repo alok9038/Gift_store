@@ -52,7 +52,7 @@
         <nav class="navbar desktop-navbar navbar-expand-lg bg-theme navbar-dark p-1" >
             <div class="container">
                 
-                <a href="" class="navbar-brand logo"><img src="{{ asset('kslogo.png') }}" style="height:45px;" alt="" class="img-fluid"></a>
+                <a href="{{ route('homepage') }}" class="navbar-brand logo"><img src="{{ asset('kslogo.png') }}" style="height:45px;" alt="" class="img-fluid"></a>
                 <form action="" class="desktop-search">
                     <div class="input-group">
                         <div class="input-group-prepend">

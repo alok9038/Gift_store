@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -42,15 +43,18 @@ class AdminController extends Controller
     }
 
     public function insert(){
-        return view('admin.insertProduct');
+        $data['category'] = Category::all();
+        return view('admin.insertProduct',$data);
     }
+
     public function insertProduct(Request $request){
         $request->validate([
             'title'          => 'required',
             'price'          => 'required',
             'discount_price' => 'required',
             'description'    => 'required',
-            'cover_image'    => 'required'
+            'cover_image'    => 'required',
+            'category'       => 'required'
         ]);
 
 
@@ -81,19 +85,21 @@ class AdminController extends Controller
         
 
         $product = new Product();
-        $product->title = $request->title;
-        $product->price = $request->price;
-        $product->discount_price = $request->discount_price;
-        $product->description = $request->description;
-        $product->model = $request->model;
-        $product->brand = $request->brand;
-        $product->cover_image = $filename;
-        $product->slug = $slug;
-        $product->images = $image;
+        $product->title             =       $request->title;
+        $product->price             =       $request->price;
+        $product->discount_price    =       $request->discount_price;
+        $product->description       =       $request->description;
+        $product->model             =       $request->model;
+        $product->brand             =       $request->brand;
+        $product->cat_id            =       $request->category;
+        $product->cover_image       =       $filename;
+        $product->slug              =       $slug;
+        $product->images            =       $image;
         $product->save();
 
         return redirect()->route('products.view');
     }
+
     public function products(){
         $data['products'] = Product::orderBy('id','desc')->get();
         return view('admin.manage_product',$data);
@@ -101,5 +107,10 @@ class AdminController extends Controller
     public function index(){
         
         return view('admin.image');
+    }
+
+    public function dropProduct($id){
+        Product::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
