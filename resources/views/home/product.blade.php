@@ -72,8 +72,8 @@
     </div>
 
     <div class="container px-3 my-5 ">
-        <div class="head mb-3" style="border-bottom: 2px solid #ff1744;">
-            <div class="d-inline-flex py-1 px-4 text-white bd-highlight bg-theme">Similar Products</div>
+        <div class="head p-0 m-0" style="border-bottom: 4px solid #ff1744;">
+            <div class="d-inline-flex px-4 py-1 pb-2 text-white bg-theme">Similar Products</div>
             <a href="" class="text-muted text-decoration-none float-end">view all</a>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 pb-5">

@@ -5,7 +5,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form action="{{ route('insert.category') }}" method="post">
+                        <form action="{{ route('insert.category') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label >Category Title</label>
@@ -13,7 +13,15 @@
                             </div>
                             <div class="mb-3">
                                 <label >Description</label>
-                                <textarea name="description" class="form-control" name="description" cols="30" rows="5"></textarea>
+                                <textarea  class="form-control" name="description" cols="30" rows="5"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label >Image</label>
+                                <input type="file" name="image" class="form-control rounded-0 shadow-sm">
+                            </div>
+                            <div class="mb-3">
+                                <label >Color <span class="text-muted">(Optional)</span></label>
+                                <input type="color" name="color" class="form-control rounded-0 shadow-sm">
                             </div>
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-info rounded-0 w-100" name="add_cat" value="Insert Category">
@@ -42,7 +50,7 @@
                     <div class="card-body">
                         <table class="table table-sm table-hover">
                             <tr class="table-dark">
-                                <th>Sr no</th>
+                                <th >Sr no</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Action</th>

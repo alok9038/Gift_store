@@ -10,58 +10,72 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function store(request $request) {
+
+    public function index(){
+        $data['products'] = Product::count();
+        $data['category'] = Category::count();
+        return view('admin.index',$data);
+    }
+
+    // public function store(request $request) {
         
-        $images = $request->file('image');
-        if ($request->hasFile('image')) :
-                foreach ($images as $item):
-                    $var = date_create();
-                    $time = date_format($var, 'YmdHis');
-                    // $imageName = time() . "." . $request->file('image')->extension();
-                    // $request->file('image')->move(public_path("album"),$imageName);
+    //     $images = $request->file('image');
+    //     if ($request->hasFile('image')) :
+    //             foreach ($images as $item):
+    //                 $var = date_create();
+    //                 $time = date_format($var, 'YmdHis');
+    //                 // $imageName = time() . "." . $request->file('image')->extension();
+    //                 // $request->file('image')->move(public_path("album"),$imageName);
 
-                    $imageName = $time . '-' . $item->getClientOriginalName();
-                    $item->move(public_path("album"), $imageName);
-                    $arr[] = $imageName;
-                endforeach;
+    //                 $imageName = $time . '-' . $item->getClientOriginalName();
+    //                 $item->move(public_path("album"), $imageName);
+    //                 $arr[] = $imageName;
+    //             endforeach;
                 
-                $image = implode(",", $arr);
-                else:
-                        $image = '';
-                endif;
+    //             $image = implode(",", $arr);
+    //             else:
+    //                     $image = '';
+    //             endif;
 
 
 
-        DB::table('image')->insert(
-        array(
-            'images' => $image
-           )
-       );
+    //     DB::table('image')->insert(
+    //     array(
+    //         'images' => $image
+    //        )
+    //    );
 
-       return redirect()->back();
+    //    return redirect()->back();
 
+    // }
+
+    public function category(){
+        $data['categories'] = Category::all();
+        return view('admin.category',$data);
     }
 
     public function storeCategory(Request $request){
-        $data['categories'] = Category::all();
-        return view('admin.category',$data);
+        $request->validate([
+            'title'          => 'required',
+            'description'    => 'required',
+            'image'          => 'required',
+        ]);
 
-       
-        if(!empty($_POST['add_cat'])){
-            $request->validate([
-                'title'          => 'required',
-                'description'    => 'required',
-            ]);
+        $filename = time() . "." . $request->image->extension();
+        $request->image->move(public_path("category"),$filename);
 
-            $category = new Category();
-            $category->title = $request->title;
-            $category->description = $request->description;
-            $category->save();
+        $category = new Category();
+        $category->cat_title = $request->title;
+        $category->description = $request->description;
+        $category->color = $request->color;
+        $category->image = $filename;
+        $category->save();
 
-            return redirect()->back();
-    
-        }
+        return redirect()->back();
+
     }
+
+
     public function insert(){
         $data['category'] = Category::all();
         return view('admin.insertProduct',$data);
@@ -124,10 +138,7 @@ class AdminController extends Controller
         $data['products'] = Product::orderBy('id','desc')->get();
         return view('admin.manage_product',$data);
     }
-    public function index(){
-        
-        return view('admin.image');
-    }
+    
 
     public function dropProduct($id){
         Product::where('id',$id)->delete();

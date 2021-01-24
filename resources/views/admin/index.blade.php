@@ -14,7 +14,7 @@
                 <div class="card border-0 bg-white shadow">
                     <div class="card-body">
                         <p class="text-muted">Total Products</p> <span class="badge bg-success rounded-3 float-end p-2"> <i class="fa fa-eye"></i></span>
-                        <h5>466</h5>
+                        <h5>{{ $products }}</h5>
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@
             <div class="col mb-4">
                 <div class="card border-0 bg-white shadow">
                     <div class="card-body">
-                        <p class="text-muted">Total Category</p> <span class="badge bg-danger rounded-3 float-end p-2"> <i class="fa fa-cogs"></i></span>
-                        <h5>19</h5>
+                        <p class="text-muted">Total Category</p> <span class="badge bg-danger rounded-3 float-end p-2"> <i class="fa fa-th-large"></i></span>
+                        <h5>{{ $category }}</h5>
                     </div>
                 </div>
             </div>

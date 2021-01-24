@@ -15,9 +15,8 @@ Route::get('/product/{name}', [HomeController::class,"product"])->name('home.pro
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    });
+    Route::get('/', [AdminController::class,"index"])->name('admin.dashboard');
+    
     Route::get('/try', function () {
         return view('admin.try');
     });
@@ -29,11 +28,12 @@ Route::prefix('admin')->group(function () {
     Route::post('/insert',[AdminController::class,"InsertProduct"])->name('insert.product');
 
     Route::get('/products',[AdminController::class,"products"])->name('products.view');
+    Route::delete('/product/{id}',[AdminController::class,"dropProduct"])->name('product.delete');
 
-    Route::get('/category',[AdminController::class,"storeCategory"])->name('category.view');
+    Route::get('/category',[AdminController::class,"category"])->name('category.view');
     Route::post('/category',[AdminController::class,"storeCategory"])->name('insert.category');
 
-    Route::delete('/product/{id}',[AdminController::class,"dropProduct"])->name('product.delete');
+    
 
 
     

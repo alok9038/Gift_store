@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Kumar Studio</title>
         <!-- CSS only -->
@@ -28,21 +29,12 @@
                             <i class="fas fa-bars fa-2x"></i>
                         </a>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="#">Home</a>
+                    @foreach ($category as $cat)
+                    <li class="sidebar-nav-item" style="border-left:3px solid {{ $cat->color }};">
+                        <a class="js-scroll-trigger" href="#">{{ $cat->cat_title }}</a>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="#">Contact</a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="#">service</a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="#">About</a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a class="js-scroll-trigger" href="#"></a>
-                    </li>
+                    @endforeach
+                    
                 </ul>
             </nav>   
         </div>
@@ -64,7 +56,7 @@
                 <ul class="navbar-nav desktop-nav d-lg-flex d-none">
                     <li class="nav-item h-link"><a href="" class="nav-link">Login</a></li>
                     <li class="nav-item h-link"><a href="" class="nav-link">Register</a></li>
-                    <li class="nav-item h-link"><a href="" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-info rounded-circle">0</span></sup></a></li>
+                    <li class="nav-item h-link"><a href="" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark h6 rounded-circle">0</span></sup></a></li>
                 </ul>
                 
             </div>
@@ -82,18 +74,38 @@
         <nav class="navbar desktop-nav menu navbar-expand-lg shadow-sm p-0 navbar-light bg-white shadow-sm" style="z-index:1000;">
             <div class="container">
                 <ul class="navbar-nav">
-                    <li class="nav-item cat"><a href="" class="nav-link ps-1">Mobile Cover</a></li>
-                    <li class="nav-item cat"><a href="" class="nav-link">T-Shirts</a></li>
-                    <li class="nav-item cat"><a href="" class="nav-link">Key Rings</a></li>
-                    <li class="nav-item cat"><a href="" class="nav-link">Photo Frame</a></li>
-                    <li class="nav-item cat"><a href="" class="nav-link">Mug/Cup</a></li>
-                    <li class="nav-item cat"><a href="" class="nav-link">Pillow</a></li>
+                    @foreach ($category as $item)
+                    <li class="nav-item cat"><a href="" class="nav-link ps-1">{{ $item->cat_title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </nav>
         @yield('content')
+        <footer style="background-color: #26272b; position:relative; bottom:0; background:url('images/footer.png'); background-size:cover; background-position:50% 50%;" class="p-3 bg-dark">
+            <div class="container py-5">
+                <div class="row row-cols-lg-2 row-cols-md-2 rows-cols-sm-2 row-cols-1">
+                    <div class="col mb-4">
+                        <div class="ad-pro">
+                            <div class="img"><img src="{{ asset('kslogo.png') }}" class="img-fluid" alt=""></div>
+                            <span class="fw-light ks-text">
+                                Kumar Studio Gifts having pioneered the concept of personalized gifts in our city (purnea), today has become a driver of marketplace innovation and a contributor in local economies. The journey of KSF, much like the gifts which are at the very heart of its business, has been an organic one. Started in 2020 in Purnea, by the enterprising Mr. Kumar Mayank.
+                            </span>
+                        </div>
+                        
+                    </div>
+                    <div class="col ">
+                    <h5 class="text-white">Popular Posts</h5>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="container border-top border-secondary py-3 pb-0 justify-content-middle">
+                <h6 class="text-muted fw-light">Developed By <a href="https://github.com/alok9038" target="_blank" class="text-light text-decoration-none">CWS</h6>
+            </div>
+        </footer>
 
 
+        {{-- mobile fixed bottom navigation --}}
         <nav class="navbar navbar-expand-lg d-lg-none mobile-foot-menu navbar-light bg-white fixed-bottom">
             <div class="container ">
                 <div class="row w-100">

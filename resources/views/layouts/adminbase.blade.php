@@ -32,31 +32,20 @@
             </div>
             <ul class="list-unstyled components p-0">
                 <li class="active">
-                    <a href="#">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt me-3" aria-hidden="true"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Category</a>
-                    <ul class="collapse list-unstyled" id="category">
-                        <li>
-                            <a href="#">Manage category</a>
-                        </li>
-                        <li>
-                            <a href="#">Add category</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
+                    <a href="{{ route('category.view') }}"><i class="fa fa-th-large me-3"></i> Category</a>
+                </li>   
 
                 <li class="">
-                    <a href="#product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Product</a>
+                    <a href="#product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-square me-3"></i> Product</a>
                     <ul class="collapse list-unstyled" id="product">
                         <li>
-                            <a href="{{ route('products.view') }}">Manage Product</a>
+                            <a href="{{ route('products.view') }}"><i class="fa fa-square me-1"></i> Manage Product</a>
                         </li>
                         <li>
-                            <a href="{{ route('insert.product.view') }}">Add Product</a>
+                            <a href="{{ route('insert.product.view') }}"><i class="fa fa-plus-square me-1"></i> Add Product</a>
                         </li>
                         <li>
                             <a href="#">Home 3</a>

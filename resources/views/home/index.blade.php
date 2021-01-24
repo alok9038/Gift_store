@@ -1,6 +1,6 @@
 @extends('layouts.homebase')
 @section('content')
-    <div class="container-fluid bg-dark p-0 home-img" style="background-image:url({{ asset('hero.jpg') }}); background-attachment:fixed; height:380px; background-size:100%; background-position:top 63px center;background-repeat:no-repeat;">
+    <div class="container-fluid bg-dark pb-5 px-0 home-img" style="background-image:url({{ asset("hero.jpg") }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col mt-5">
@@ -22,86 +22,19 @@
             
         </style>
         <section class="customer-logos slider mt-4">
+            @foreach ($category as $cat)
             <div class="slide">
               <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50%;" class="img-fluid" alt="">
+                  <div class="" style="border-radius:50%; background-color:{{ $cat->color }}; padding:2px;">
+                    <img src="{{ asset('category/'.$cat->image) }}" style="border-radius:50%;" class="img-fluid" alt="">
+                  </div>
                   <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
+                      <h6 class="text-center small">{{ $cat->cat_title }}</h6>
+                      <a href="" class="stretched-link"></a>
                   </div>
               </div>
             </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card border-0" style="border-radius:25px;">
-                  <img src="{{ asset('tshirts.png') }}" style="border-radius:50px;" class="img-fluid" alt="">
-                  <div class="card-body">
-                      <h6 class="text-center small">T-shirts</h6>
-                  </div>
-              </div>
-            </div>
+            @endforeach   
         </section>
         <div class="paginator">
             <div class="mx-auto text-center" style="width: auto;">
