@@ -39,7 +39,7 @@ class UserController extends Controller
                 }
             }
             else{
-                $orders = Order::insert(["ordered"=>false,"user_id"=>$user, 'coupon'=>0]);
+                $orders = Order::insert(["ordered"=>false,"user_id"=>$user, 'coupon'=>0, 'address'=>0]);
                 echo $last_id = $order->id;
 
                 $orderitem = Order_item::insert([
