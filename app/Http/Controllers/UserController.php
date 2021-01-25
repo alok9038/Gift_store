@@ -39,7 +39,7 @@ class UserController extends Controller
                 }
             }
             else{
-                $orders = Order::insert(["ordered"=>false,"user_id"=>$user]);
+                $orders = Order::insert(["ordered"=>false,"user_id"=>$user, 'coupon'=>0]);
                 echo $last_id = $order->id;
 
                 $orderitem = Order_item::insert([
@@ -69,7 +69,7 @@ class UserController extends Controller
 
         if($id!= null){
             $query = Order::where('id',$id)->update([
-                'coupon_id' => null
+                'coupon_id' => 0
                 ]);
                 return redirect()->back();
         }
