@@ -10,8 +10,14 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class,"index"])->name('homepage');
 Route::get('/product/{name}', [HomeController::class,"product"])->name('home.product');
 
-// cart work //
 
+// product filter
+//Route::get('/{name}', [HomeController::class,"cat_filter"])->name('cat_filter');
+
+Route::get('/category/{name}',[HomeController::class,"filter"])->name('filter');
+
+
+// cart work //
 Route::get('/cart', [UserController::class,"cart"])->name('cart');
 Route::post('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
 Route::post('/cart/minus/{id}',[UserController::class,"minus"])->name('decrease.items');
@@ -20,7 +26,7 @@ Route::post('/cart/minus/{id}',[UserController::class,"minus"])->name('decrease.
 Route::get('/coupon/{id}',[UserController::class,"coupon"])->name('coupon.remove');
 
 // add coupon
-Route::post('/cart', [UserController::class,"coupon"])->name('coupon');
+Route::post('/coupon', [UserController::class,"coupon"])->name('coupon');
 
 
 // For admin Pannel //

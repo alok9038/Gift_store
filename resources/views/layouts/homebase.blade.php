@@ -31,7 +31,7 @@
                     </li>
                     @foreach ($category as $cat)
                     <li class="sidebar-nav-item" style="border-left:3px solid {{ $cat->color }};">
-                        <a class="js-scroll-trigger" href="#">{{ $cat->cat_title }}</a>
+                        <a class="js-scroll-trigger" href="{{ route('filter',['name'=>$cat->slug]) }}">{{ $cat->cat_title }}</a>
                     </li>
                     @endforeach
                     
@@ -85,7 +85,7 @@
             <div class="container">
                 <ul class="navbar-nav">
                     @foreach ($category as $item)
-                    <li class="nav-item cat"><a href="" class="nav-link ps-1">{{ $item->cat_title }}</a></li>
+                    <li class="nav-item cat"><a href="{{ route('filter',['name'=>$item->slug]) }}" class="nav-link ps-1">{{ $item->cat_title }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -131,22 +131,30 @@
         {{-- mobile fixed bottom navigation --}}
         <nav class="navbar navbar-expand-lg d-lg-none mobile-foot-menu navbar-light bg-white fixed-bottom">
             <div class="container ">
-                <div class="row w-100">
+                <div class="row d-flex w-100">
                     <div class="col-3 text-center text-dark">
-                        <i class="fas fa-home"></i>
-                        <p class="h6">Home</p>
+                        <a href="{{ route('homepage') }}" class=" text-decoration-none text-dark">
+                            <i class="fas fa-home"></i>
+                            <p class="h6">Home</p>
+                        </a>
                     </div>
                     <div class="col-3 text-center text-dark">
+                        <a href="pokemon" class=" text-decoration-none text-dark">
                         <i class="fas fa-gift"></i>
                         <p class="h6">Orders</p>
+                        </a>
                     </div>
+                        <div class="col-3 text-center text-dark">
+                            <a href="pokemon" class=" text-decoration-none text-dark">
+                            <i class="fas fa-heart"></i>
+                            <p class="h6">wishlist</p>
+                            </a>
+                        </div>
                     <div class="col-3 text-center text-dark">
-                        <i class="fas fa-heart"></i>
-                        <p class="h6">wishlist</p>
-                    </div>
-                    <div class="col-3 text-center text-dark">
+                        <a href="pokemon" class=" text-decoration-none text-dark">
                         <i class="fas fa-user"></i>
                         <p class="h6">Account</p>
+                        </a>
                     </div>
                 </div>
             </div>

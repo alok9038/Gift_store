@@ -26,5 +26,26 @@ class HomeController extends Controller
         $data['product'] = Product::where('slug',$name)->first();
         return view('home.product',$data);
     }
+
+    // public function cat_filter($name){
+    //     $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();
+    //     // count cart items
+    //     $data['category'] = Category::all();
+    //     $cat = Category::where('slug',$name)->get();
+
+    //     $data['products'] = Product::where('cat_id',$cat[0]->id)->get();
+    //     return view('home.filter',$data);
+    // }
+
+    public function filter($name){
+        $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();
+        // count cart items
+        $data['category'] = Category::all();
+        $cat = Category::where('slug',$name)->get();
+
+        $data['products'] = Product::where('cat_id',$cat[0]->id)->get();
+        return view('home.filter',$data);
+    }
+    
     
 }

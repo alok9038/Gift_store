@@ -18,7 +18,7 @@
         </div>
     </div>
     {{-- banner section end --}}
-    
+
     {{-- category section --}}
     <div class="container mt-4 categories">
         <div class="head text-center"><h4 class="fw-light text-center">Categories <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
@@ -34,7 +34,7 @@
                   </div>
                   <div class="card-body">
                       <h6 class="text-center small">{{ $cat->cat_title }}</h6>
-                      <a href="" class="stretched-link"></a>
+                      <a href="{{ route('filter',['name'=>$cat->slug]) }}" class="stretched-link"></a>
                   </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
         <div class="head text-center"><h4 class="fw-light text-center">Latest Collections <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
             @foreach ($products as $product)
-                <div class="col">
+                <div class="col mb-4">
                     <div class="card border-0 shadow-sm post-item" style="border-radius: 5px;">
                         <img src="{{ asset('product/'.$product->cover_image) }}" style="height: 266px; object-fit:cover; object-position:center;" alt="" class="img-fluid card-img-top">
                         <div class="card-body">

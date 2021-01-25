@@ -1,8 +1,11 @@
 @extends('layouts.homebase')
 @section('content')
     {{-- post items --}}
+    @if (!empty($products))
+        
+    
     <div class="container my-5">
-        <div class="head text-center"><h4 class="fw-light text-center">Latest Collections <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
+        <div class="head text-center"><h4 class="fw-light text-center">{{ "category title here " }} <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
             @foreach ($products as $product)
                 <div class="col">
@@ -17,5 +20,7 @@
             @endforeach
         </div>
     </div>
+    @endif
+
     {{-- post items end --}}
 @endsection

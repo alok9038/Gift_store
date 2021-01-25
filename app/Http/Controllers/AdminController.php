@@ -63,12 +63,14 @@ class AdminController extends Controller
 
         $filename = time() . "." . $request->image->extension();
         $request->image->move(public_path("category"),$filename);
+        $slug = Str::of($request->title)->slug('-');
 
         $category = new Category();
         $category->cat_title = $request->title;
         $category->description = $request->description;
         $category->color = $request->color;
         $category->image = $filename;
+        $category->slug = $slug;
         $category->save();
 
         return redirect()->back();
@@ -78,7 +80,7 @@ class AdminController extends Controller
 
     public function insert(){
         $data['category'] = Category::all();
-        return view('admin.insertProduct',$data);
+        return view('admin.insertproduct',$data);
     }
 
     public function insertProduct(Request $request){
