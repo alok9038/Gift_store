@@ -13,8 +13,14 @@ Route::get('/product/{name}', [HomeController::class,"product"])->name('home.pro
 // cart work //
 
 Route::get('/cart', [UserController::class,"cart"])->name('cart');
+Route::post('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
+Route::post('/cart/minus/{id}',[UserController::class,"minus"])->name('decrease.items');
+
+// remove coupon
+Route::get('/coupon/{id}',[UserController::class,"coupon"])->name('coupon.remove');
+
+// add coupon
 Route::post('/cart', [UserController::class,"coupon"])->name('coupon');
-Route::get('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
 
 
 // For admin Pannel //

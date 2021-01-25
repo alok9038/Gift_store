@@ -1,5 +1,6 @@
 @extends('layouts.homebase')
 @section('content')
+    {{--banner section  --}}
     <div class="container-fluid bg-dark pb-5 px-0 home-img" style="background-image:url({{ asset("hero.jpg") }});">
         <div class="container">
             <div class="row">
@@ -16,6 +17,9 @@
             </div>
         </div>
     </div>
+    {{-- banner section end --}}
+    
+    {{-- category section --}}
     <div class="container mt-4 categories">
         <div class="head text-center"><h4 class="fw-light text-center">Categories <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
         <style>
@@ -43,6 +47,9 @@
             </div>
         </div>
     </div>
+    {{-- category section end --}}
+
+    {{-- post items --}}
     <div class="container my-5">
         <div class="head text-center"><h4 class="fw-light text-center">Latest Collections <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
@@ -59,5 +66,6 @@
             @endforeach
         </div>
     </div>
+    {{-- post items end --}}
     
 @endsection

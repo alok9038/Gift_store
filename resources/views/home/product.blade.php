@@ -71,14 +71,17 @@
                             </div>
                         </div>
                     </div> --}}
-                <div class=" mt-4">
+                <div class="d-flex mt-4">
                     @auth
-                        <a href="{{ route('add.to.cart',['id'=>$product->id]) }}" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
+                    <form action="{{ route('add.to.cart',['id'=>$product->id]) }}" method="post">
+                        @csrf
+                        <button class="btn bg-green rounded-0 shadow-none">Add to cart</button>
+                    </form>
                     @endauth
                     @guest
                         <a href="{{ route('login') }}" class="btn bg-green rounded-0 shadow-none">Add to cart</a>
                     @endguest
-                    <a href="#details" class="btn btn-secondary rounded-0 shadow-none">Know More</a>
+                    <a href="#details" class="btn ms-2 btn-secondary rounded-0 shadow-none">Know More</a>
                 </div>
                 <div class="alert alert-secondary rounded-0 small mt-4">
                     <h6 class="fw-light fs-5">Bulk Enquiry</h6>

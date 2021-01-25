@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function addToCart($id){
         $count = Product::where('id',$id)->get();
         $user =  Auth::id();
@@ -60,9 +63,19 @@ class UserController extends Controller
         $data['category'] = Category::all();
         return view('home.cart',$data);
     }
-    public function coupon(Request $req){
+    public function coupon(Request $req, $id = null){
         $order_id = $req->order_id;
         $coupon = $req->code;
+
+        if($id!= null){
+            $query = Order::where('id',$id)->update([
+                'coupon_id' => null
+                ]);
+                return redirect()->back();
+        }
+        else{
+            echo "<script>alert('Something Went Wrong')</script>";
+        }
 
         $check = Coupon::where('code',$coupon)->get();
         if(count($check) == 0){
@@ -76,4 +89,31 @@ class UserController extends Controller
         }
         
     }
+
+    public function minus($id){
+       
+        $user = Auth::id();
+        $item = Product::where('id',$id)->get();
+        
+        if(count($item) > 0){
+            $order = Order::where([['user_id',$user],['ordered',false]])->get();
+            if(count($order) > 0){
+                // if exist
+                $cond = [['ordered',false],['user_id',$user],['order_id',$order[0]->id],['product_id',$id]];
+                $order_item = Order_item::where($cond)->get();
+
+                if($order_item[0]->qty > 1){
+                    $qty = $order_item[0]->qty-=1;
+                    Order_item::where($cond)->update(['qty'=>$qty]);
+                }
+                else{
+                    Order_item::where($cond)->delete();
+                }
+                return redirect()->back();
+            }
+            
+        }
+        
+    }
+
 }

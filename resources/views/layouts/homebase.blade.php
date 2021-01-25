@@ -39,7 +39,12 @@
             </nav>   
         </div>
         <ul class="navbar-nav mobile-cart">
+            @guest
             <li class="nav-item"><a href="" class="nav-link text-light"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">0</span></sup></a></li>
+            @endguest
+            @auth
+            <li class="nav-item h-link"><a href="{{ route('cart') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">{{ count($items) }}</span></sup></a></li>
+            @endauth
         </ul>
         <nav class="navbar desktop-navbar navbar-expand-lg bg-theme navbar-dark p-1" >
             <div class="container">
@@ -54,14 +59,14 @@
                     </div>
                 </form>
                 <ul class="navbar-nav desktop-nav d-lg-flex d-none">
-                    @auth
-                        
-                    @endauth
                     @guest
                         <li class="nav-item h-link"><a href="" class="nav-link">Login</a></li>
                         <li class="nav-item h-link"><a href="" class="nav-link">Register</a></li>
+                        <li class="nav-item h-link"><a href="{{ route('login') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">0</span></sup></a></li>
                     @endguest
-                    <li class="nav-item h-link"><a href="" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark h6 rounded-circle">0</span></sup></a></li>
+                    @auth
+                    <li class="nav-item h-link"><a href="{{ route('cart') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">{{ count($items) }}</span></sup></a></li>
+                    @endauth
                 </ul>
                 
             </div>

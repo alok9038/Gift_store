@@ -42,14 +42,20 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <h4 class="text-truncate h6" title="">{{ $item->items->title }}</h4>
-                                    <p class="text-muted small">black</p>
+                                    <p class="text-muted small">{{ $item->items->cat->cat_title }}</p>
                                     <h4 class="h6">₹ {{ $item->items->discount_price }}/- <span class="small font-weight-light ml-3 text-muted"><del>₹ {{ $item->items->price }}/-</del></span></h4>                                 
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="box btn-group">
-                                        <a href="" class="btn border-0 btn-secondary rounded-0">-</a>
+                                        <form action="{{ route('decrease.items',['id'=>$item->items->id]) }}" method="post">
+                                            @csrf
+                                            <button class="btn border-0 btn-secondary rounded-0">-</button>
+                                        </form>
                                         <a href="" class="btn btn-light  text-dark border disabled rounded-0">{{ $item->qty }}</a>
-                                        <a href="" class="btn border-0 btn-secondary rounded-0">+</a>
+                                        <form action="{{ route('add.to.cart',['id'=>$item->items->id]) }}" method="post">
+                                            @csrf
+                                            <button class="btn border-0 btn-secondary rounded-0">-</button>
+                                        </form>
                                     </div>
                                     <div class="box mt-3">
                                         <a href="" class="text-muted small text-decoration-none"> <i class="fa fa-trash"></i>  Remove</a>
@@ -100,7 +106,7 @@
                             @csrf
                             <div class="input-group">
                                 <input type="text" name="order_id" hidden value="{{ $order->id }}">
-                                <input type="search" name="code" id="" placeholder="Enter coupon code" class="form-control shadow-none rounded-0">
+                                <input type="search" name="code" placeholder="Enter coupon code" class="form-control shadow-none rounded-0">
                                 <div class="input-group-append">
                                     <input type="submit" value="Apply" class="btn btn-info rounded-0">
                                 </div>
@@ -109,7 +115,7 @@
 
                             @if (!empty($order->coupon_id))
                                 <h6 class="mt-3 text-success-2">
-                                    <a href="" class="text-theme"><i class="fa fa-trash"></i></a> <strong>{{ $order->coupon->code }}</strong> <small>Applied</small>
+                                    <a href="{{ route('coupon.remove',['id'=>$order->id]) }}" class="text-theme"><i class="fa fa-trash"></i></a> <strong>{{ $order->coupon->code }}</strong> <small>Applied</small>
                                 </h6>
                             @endif
                         
