@@ -69,7 +69,7 @@ class UserController extends Controller
 
         if($id!= null){
             $query = Order::where('id',$id)->update([
-                'coupon_id' => 10
+                'coupon_id' => null
                 ]);
                 return redirect()->back();
         }
