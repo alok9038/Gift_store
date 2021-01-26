@@ -41,7 +41,7 @@ class UserController extends Controller
             }
             else{
                 $orders = Order::insert(["ordered"=>false,"user_id"=>$user,"coupon_id"=>null, "address"=>null]);
-                echo $last_id = $orders->id;
+                echo $last_id = $orders[0]->id;
 
                 $orderitem = Order_item::insert([
                     "ordered"=>false,
@@ -128,7 +128,7 @@ class UserController extends Controller
 
     public function address(Request $req){
         $user_id = Auth::id();
-        
+
         if(!empty($req->address)){
             $address_id = $req->address;
             $order = Order::where(['ordered'=>false],['user_id'=>$user_id])->update(['address'=>$address_id, 'user_id'=>$user_id, 'ordered'=>false]);
