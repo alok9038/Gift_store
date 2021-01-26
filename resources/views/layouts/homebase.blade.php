@@ -113,7 +113,7 @@
                             
                         </div>
                         <div class="col ">
-                        <h5 class="text-white">Popular Posts</h5>
+                        <h5 class="text-white">Popular Products</h5>
                             
                         </div>
                     </div>
