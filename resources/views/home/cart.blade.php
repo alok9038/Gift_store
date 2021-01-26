@@ -27,7 +27,7 @@
 
 <div class="container mb-5 mt-0">
 
-    @if (count($items) == 0)
+    @if (count($items) != 0)
         <div class="row mb-5 ">
             <div class="col-lg-8">
                 <div class="card rounded-0 shadow-sm mt-5">

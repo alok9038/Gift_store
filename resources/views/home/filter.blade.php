@@ -1,7 +1,7 @@
 @extends('layouts.homebase')
 @section('content')
     {{-- post items --}}
-    @if (!empty($products))
+    @if(count($products) != 0)
         
     
     <div class="container my-5">
@@ -18,6 +18,15 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+    @else
+    <div class="container pt-5 mb-5">
+        <div class="row my-5">
+            <div class="col-lg-5 mx-auto">
+            <h5 class="text-center font-weight-light text-muted">No items Found!</h5>
+            <p class="text-center small text-muted">Please check with another category :)</p>
+            </div>
         </div>
     </div>
     @endif
