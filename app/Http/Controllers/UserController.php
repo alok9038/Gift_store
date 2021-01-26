@@ -93,6 +93,15 @@ class UserController extends Controller
         
     }
 
+    public function orders(){
+        $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();
+        // count cart items
+
+        $data['order'] = Order_item::where([['user_id',Auth::id()],['ordered',true]])->get();
+        $data['category'] = Category::all();
+        return view('home.orders',$data);
+    }
+
     public function minus($id){
        
         $user = Auth::id();
