@@ -27,7 +27,7 @@
 
 <div class="container mb-5 mt-0">
 
-    @if (!empty($items))
+    @if (count($items) == 0)
         <div class="row mb-5 ">
             <div class="col-lg-8">
                 <div class="card rounded-0 shadow-sm mt-5">
@@ -131,9 +131,9 @@
         <div class="container pt-5">
             <div class="row mt-5">
                 <div class="col-lg-5 mx-auto">
-                <h6 class="text-center"><img src="" style="width:60%" alt=""></h6>
-                <h5 class="text-center font-weight-light">Your cart is empty!</h5>
-                <p class="text-center small">Add items to it now.</p>
+                <h6 class="text-center"><img src="{{ asset('emptyc.png') }}" style="width:100%" alt=""></h6>
+                <h5 class="text-center font-weight-light text-muted">Your cart is empty!</h5>
+                <p class="text-center small text-muted">Add Something to make me happy :)</p>
                 </div>
             </div>
         </div>
