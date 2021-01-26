@@ -33,8 +33,8 @@
                     <img src="{{ asset('category/'.$cat->image) }}" style="border-radius:50%;" class="img-fluid" alt="">
                   </div>
                   <div class="card-body">
-                      <h6 class="text-center small">{{ $cat->cat_title }}</h6>
-                      <a href="{{ route('filter',['name'=>$cat->slug]) }}" class="stretched-link"></a>
+                      <h6 class="text-center small text-truncate">{{ $cat->cat_title }}</h6>
+                      <a href="{{ route('filter',['name'=>$cat->slug]) }}" title="{{ $cat->cat_title }}" class="stretched-link"></a>
                   </div>
               </div>
             </div>
