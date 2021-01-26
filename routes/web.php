@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 
 // for homepage //
 
-Route::get('', [HomeController::class,"index"])->name('homepage');
+Route::get('/', [HomeController::class,"index"])->name('homepage');
 Route::get('/product/{name}', [HomeController::class,"product"])->name('home.product');
 
 
@@ -33,7 +33,7 @@ Route::post('/coupon', [UserController::class,"coupon"])->name('coupon');
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('', [AdminController::class,"index"])->name('admin.dashboard');
+    Route::get('/', [AdminController::class,"index"])->name('admin.dashboard');
     
     Route::get('/try', function () {
         return view('admin.try');
