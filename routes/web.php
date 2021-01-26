@@ -28,6 +28,9 @@ Route::post('/checkout',[UserController::class,"address"])->name('insert.address
 
 Route::get('/myorder',[UserController::class,"orders"])->name('order');
 
+Route::get('/payment',[UserController::class,"payment"])->name('payment.view');
+Route::post('/payment',[UserController::class,"payment"])->name('payment');
+
 // add coupon
 Route::post('/coupon', [UserController::class,"coupon"])->name('coupon');
 // remove coupon
