@@ -16,7 +16,7 @@
                             <textarea  class="form-control" name="amount" cols="30" rows="5"></textarea>
                         </div>
                         <div class="mb-3">
-                            <input type="submit" class="btn btn-info rounded-0 w-100" value="Add coupon">
+                            <input type="submit" class="btn btn-info rounded-0 w-100" name="add" value="Add coupon">
                         </div>
                     </form>
                 </div>
@@ -46,7 +46,7 @@
                             <th>Code</th>
                             <th>Amount</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th class="">Action</th>
                         </tr>
                         @php
                             $sr = 0
@@ -64,7 +64,7 @@
                                     @endif
                                 </td>
                                 <td class="d-flex">
-                                    {{-- <form action="{{ route('coupon.delete',['id'=>$coupon->id]) }}" method="post">
+                                    <form action="{{ route('coupon.delete',['id'=>$coupon->id]) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger rounded-0 btn-sm"><i class="fa fa-trash"></i></button>
@@ -73,7 +73,18 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-info rounded-0 btn-sm"><i class="fa fa-edit"></i></button>
-                                    </form> --}}
+                                    </form>
+                                    @if ($coupon->status == 1)
+                                    <form action="{{ route('coupon.status',['id'=>$coupon->id]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" name="deactive" class="btn btn-danger ms-3 rounded-0 btn-sm">Deactivate</button>
+                                    </form>
+                                    @else
+                                    <form action="{{ route('coupon.status',['id'=>$coupon->id]) }}" method="post">
+                                        @csrf
+                                        <button type="submit" name="active" class="btn btn-success ms-3 px-4 rounded-0 btn-sm">Active</button>
+                                    </form>                                 
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

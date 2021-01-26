@@ -97,6 +97,20 @@ class AdminController extends Controller
         return view('admin.coupon',$data);
     }
 
+    public function drop_coupon($id){
+        Coupon::where('id',$id)->delete();
+        return redirect()->back();
+    }
+    public function coupon_status(Request $req, $id){
+        if(isset($_POST['deactive'])){
+            Coupon::where('id',$id)->update(['status'=>0]);
+        }
+        elseif(isset($_POST['active'])){
+            Coupon::where('id',$id)->update(['status'=>1]);
+        }
+        
+        return redirect()->back();
+    }
 
     public function insert(){
         $data['category'] = Category::all();

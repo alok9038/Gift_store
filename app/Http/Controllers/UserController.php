@@ -68,6 +68,7 @@ class UserController extends Controller
         $order_id = $req->order_id;
         $coupon = $req->code;
 
+        // remove coupon
         if($id!= null){
             $query = Order::where('id',$id)->update([
                 'coupon_id' => null
@@ -78,7 +79,8 @@ class UserController extends Controller
             echo "<script>alert('Something Went Wrong')</script>";
         }
 
-        $check = Coupon::where('code',$coupon)->get();
+        // add coupon
+        $check = Coupon::where(['code',$coupon],['status'=> 1])->get();
         if(count($check) == 0){
             echo "<script>alert('coupon code not valid')</script>";
             //return redirect()->back();

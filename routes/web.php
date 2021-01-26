@@ -59,7 +59,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/coupon',[AdminController::class,"coupon"])->name('coupon.view');
     Route::post('/coupon',[AdminController::class,"store_coupon"])->name('insert.coupon');
-    // Route::get('/coupon',[AdminController::class,"store_coupon"])->name('coupon.delete');
+    Route::delete('/coupon/{id}',[AdminController::class,"drop_coupon"])->name('coupon.delete');
+    Route::post('/coupon/status/{id}',[AdminController::class,"coupon_status"])->name('coupon.status');
 
 
 
