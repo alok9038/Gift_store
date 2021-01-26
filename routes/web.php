@@ -21,6 +21,7 @@ Route::get('/category/{name}',[HomeController::class,"filter"])->name('filter');
 Route::get('/cart', [UserController::class,"cart"])->name('cart');
 Route::post('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart');
 Route::post('/cart/minus/{id}',[UserController::class,"minus"])->name('decrease.items');
+Route::get('/cart/remove_item/{id}',[UserController::class,"remove_item"])->name('remove.item');
 
 // remove coupon
 Route::get('/coupon/{id}',[UserController::class,"coupon"])->name('coupon.remove');

@@ -39,8 +39,8 @@ class UserController extends Controller
                 }
             }
             else{
-                $orders = Order::insert(["ordered"=>false,"user_id"=>$user]);
-                echo $last_id = $order->id;
+                $orders = Order::insert(["ordered"=>false,"user_id"=>$user,"coupon"=>10, "address"=>10]);
+                echo $last_id = $order[0]->id;
 
                 $orderitem = Order_item::insert([
                     "ordered"=>false,
@@ -69,7 +69,7 @@ class UserController extends Controller
 
         if($id!= null){
             $query = Order::where('id',$id)->update([
-                'coupon_id' => null
+                'coupon_id' => 10
                 ]);
                 return redirect()->back();
         }
@@ -114,6 +114,15 @@ class UserController extends Controller
             
         }
         
+    }
+    
+    public function remove_item($id){
+        $user = Auth::id();
+        $order = Order::where([['user_id',$user],['ordered',false]])->get();
+        $cond = [['ordered',false],['user_id',$user],['order_id',$order[0]->id],['product_id',$id]];
+        Order_item::where($cond)->delete();
+
+        return redirect()->back();
     }
 
 }

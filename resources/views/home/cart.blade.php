@@ -54,11 +54,11 @@
                                         <a href="" class="btn btn-light  text-dark border disabled rounded-0">{{ $item->qty }}</a>
                                         <form action="{{ route('add.to.cart',['id'=>$item->items->id]) }}" method="post">
                                             @csrf
-                                            <button class="btn border-0 btn-secondary rounded-0">-</button>
+                                            <button class="btn border-0 btn-secondary rounded-0">+</button>
                                         </form>
                                     </div>
                                     <div class="box mt-3">
-                                        <a href="" class="text-muted small text-decoration-none"> <i class="fa fa-trash"></i>  Remove</a>
+                                        <a href="{{ route('remove.item',['id'=>$item->items->id]) }}" class="text-muted small text-decoration-none"> <i class="fa fa-trash"></i>  Remove</a>
                                     </div>
                                 </div>
                             </div>
