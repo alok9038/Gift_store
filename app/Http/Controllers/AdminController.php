@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Coupon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -75,6 +76,25 @@ class AdminController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function store_coupon(Request $req){
+        $req->validate([
+            'code' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $coupon = new Coupon();
+        $coupon->code = $req->code;
+        $coupon->amount = $req->amount;
+        $coupon->save();
+
+        return redirect()->back();
+    }
+
+    public function coupon(){
+        $data['coupons'] = Coupon::all();
+        return view('admin.coupon',$data);
     }
 
 

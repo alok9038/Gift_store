@@ -57,6 +57,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/category',[AdminController::class,"category"])->name('category.view');
     Route::post('/category',[AdminController::class,"storeCategory"])->name('insert.category');
 
+    Route::get('/coupon',[AdminController::class,"coupon"])->name('coupon.view');
+    Route::post('/coupon',[AdminController::class,"store_coupon"])->name('insert.coupon');
+    // Route::get('/coupon',[AdminController::class,"store_coupon"])->name('coupon.delete');
+
+
+
     
 
 

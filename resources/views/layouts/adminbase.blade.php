@@ -66,6 +66,9 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('coupon.view') }}"><i class="fa fa-trash me-3"></i> Coupon</a>
+                </li>
                 
                 
                 <li>
