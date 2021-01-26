@@ -23,6 +23,11 @@ Route::post('/cart/{id}',[UserController::class,"addToCart"])->name('add.to.cart
 Route::post('/cart/minus/{id}',[UserController::class,"minus"])->name('decrease.items');
 Route::get('/cart/remove_item/{id}',[UserController::class,"remove_item"])->name('remove.item');
 
+Route::get('/checkout',[UserController::class,"checkout"])->name('checkout');
+Route::post('/checkout',[UserController::class,"address"])->name('insert.address');
+
+
+
 // remove coupon
 Route::get('/coupon/{id}',[UserController::class,"coupon"])->name('coupon.remove');
 

@@ -5,6 +5,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Coupon;
+use App\Models\Address;
 use Auth;
 use App\Models\Order_item;
 use Illuminate\Http\Request;
@@ -123,6 +124,59 @@ class UserController extends Controller
         Order_item::where($cond)->delete();
 
         return redirect()->back();
+    }
+
+    public function address(Request $req){
+        $user_id = Auth::id();
+        
+        if(!empty($req->address)){
+            $address_id = $req->address;
+            $order = Order::where(['ordered'=>false],['user_id'=>$user_id])->update(['address'=>$address_id, 'user_id'=>$user_id, 'ordered'=>false]);
+            return redirect()->back();
+        }else{
+            $req->validate([
+                'name' => 'required',
+                'contact' => 'required',
+                'street' => 'required',
+                'city' => 'required',
+                'pincode' => 'required',
+                'state' => 'required',
+                'pincode' => 'required',
+                'landmark' => 'required'
+            ]);
+
+            
+            $add = new Address();
+            $add->name = $req->name;
+            $add->street = $req->street;
+            $add->city = $req->city;
+            $add->pincode = $req->pincode;
+            $add->contact = $req->contact;
+            $add->state = $req->state;
+            $add->pincode = $req->pincode;
+            $add->landmark = $req->landmark;
+            $add->user_id = $user_id;
+            $add->save();
+            echo $last_id = $add->id;
+
+            $order = Order::where(['ordered'=>false],['user_id'=>$user_id])->update(['address'=>$last_id, 'user_id'=>$user_id, 'ordered'=>false]);
+        
+        }
+        return redirect()->back();
+    }
+
+    public function checkout(){
+
+        $data['items'] = Order_item::where([['user_id',Auth::id()],['ordered',false]])->get();
+        // count cart items
+        $data['category'] = Category::all();
+        
+        $u_id = Auth::id();
+        $data['user'] = Auth::user()->where(['id'=>$u_id],['is_admin'=>'USR'])->first();
+        $data['address'] = Address::where('user_id',$u_id)->get();
+
+        return view('home.checkout',$data);
+
     }
 
 }
