@@ -40,7 +40,7 @@
         </div>
         <ul class="navbar-nav mobile-cart">
             @guest
-            <li class="nav-item"><a href="" class="nav-link text-light"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">0</span></sup></a></li>
+            <li class="nav-item"><a href="{{ route('login') }}" class="nav-link text-light"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">0</span></sup></a></li>
             @endguest
             @auth
             <li class="nav-item h-link"><a href="{{ route('cart') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><sup><span class="badge bg-white text-dark rounded-circle">{{ count($items) }}</span></sup></a></li>
