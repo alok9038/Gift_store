@@ -135,25 +135,25 @@
                     <div class="col-3 text-center text-dark">
                         <a href="{{ route('homepage') }}" class=" text-decoration-none text-dark">
                             <i class="fas fa-home"></i>
-                            <p class="h6 fw-light">Home</p>
+                            <p class="h6 fw-light small">Home</p>
                         </a>
                     </div>
                     <div class="col-3 text-center text-dark">
                         <a href="pokemon" class=" text-decoration-none text-dark">
                         <i class="fas fa-gift"></i>
-                        <p class="h6 fw-light">Orders</p>
+                        <p class="h6 fw-light small">Orders</p>
                         </a>
                     </div>
                         <div class="col-3 text-center text-dark">
                             <a href="pokemon" class=" text-decoration-none text-dark">
                             <i class="fas fa-heart"></i>
-                            <p class="h6 fw-light">wishlist</p>
+                            <p class="h6 fw-light small">wishlist</p>
                             </a>
                         </div>
                     <div class="col-3 text-center text-dark">
                         <a href="pokemon" class=" text-decoration-none text-dark">
                         <i class="fas fa-user"></i>
-                        <p class="h6 fw-light">Account</p>
+                        <p class="h6 fw-light small">Account</p>
                         </a>
                     </div>
                 </div>
