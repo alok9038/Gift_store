@@ -13,7 +13,7 @@
         
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ url('css/style.css') }}">
         <script src="{{ asset('js/font.js') }}" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -201,7 +201,7 @@
             });
         </script>
         {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
-        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ url('js/main.js') }}"></script>
         <script>
             var lastScrollTop = 0, px = 0, scrollDownBool = false;
             $(window).scroll(function(event){

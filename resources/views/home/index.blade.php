@@ -22,9 +22,6 @@
     {{-- category section --}}
     <div class="container mt-4 categories">
         <div class="head text-center"><h4 class="fw-light text-center">Categories <br> <img src="{{ asset('star.jpg') }}" alt="" class="img-fluid" style="width: 360px;"></h4></div>
-        <style>
-            
-        </style>
         <section class="customer-logos slider mt-4">
             @foreach ($category as $cat)
             <div class="slide">
